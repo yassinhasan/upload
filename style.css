@@ -1,0 +1,455 @@
+html,body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+/*  name = "yassin" */
+:root{
+  --nav-height: 80px;
+  --heading-one: 48px;
+  --heading-two: 24px;
+  --heading-three: 20px;
+  --heading-four: 16px;
+  --caption-one: 24px;
+  --caption-two: 16px;
+  --caption-three: 14px;
+}
+
+body{
+  font-family: "Poppins", sans-serif;
+  --primary-color: #fbfbfbfb;
+  --secondary-color: #f3dddd;
+  --caption-color: #999999;
+  --accent-color: #b58126;
+  --error-color: #b52626;
+  --theme-color: #030303;
+  background: var(--theme-color);
+}
+body.light{
+  /* light-theme */
+  --primary-color: #121212;
+  --secondary-color: #262626;
+  --caption-color: #999999;
+  --accent-color: #ce2c93;
+  --theme-color: #fbfbfb;
+   background: var(--theme-color);
+}
+
+/* common */
+.text-center{
+  text-align: center;
+}
+.heading-1{
+  font-size: var(--heading-one);
+  color: var(--primary-color);
+}
+.heading-2
+{
+  font-size: var(--heading-two);
+  color: var(--primary-color);
+  font-weight: 400;
+}
+.heading-3
+{
+  font-size: var(--heading-three);
+  color: var(--primary-color);
+  font-weight: 400;
+}
+.heading-4
+{
+  font-size: var(--heading-four);
+  color: var(--primary-color);
+  font-weight: 300;
+}
+.caption-1{
+  font-size: var(--caption-one);
+  color: var(--caption-color);
+  font-weight: normal;
+}
+.caption-2{
+  font-size: var(--caption-two);
+  color: var(--caption-color);
+  font-weight: normal;
+}
+.caption-3{
+  font-size: var(--caption-three);
+  color: var(--caption-color);
+  font-weight: normal;
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+   position: relative;
+}
+
+.home-wraper{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* links */
+nav{
+  height:  var(--nav-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  position: relative;
+  z-index: 100;
+}
+nav .logo h1 .color-letter{
+  color: var(--accent-color);
+}
+.right-links{
+  display: flex;
+  align-items: center;
+}
+
+.right-links .fa-moon
+{
+  cursor: pointer;
+  font-size: var(--heading-two);
+  margin-right: 16px;
+  color: var(--primary-color);
+}
+nav .links a{
+  text-decoration: none;
+  color:  var(--primary-color);
+  margin-right: 8px;
+}
+.sign-in i{
+  color: var(--accent-color);
+}
+.menu-btn{
+  display: none;
+}
+.file-icon{
+  display: none;
+}
+/* modal */
+.modal-content {
+  border-radius: 8px;
+}
+.modal-content , .form-control{
+  background-color: var(--theme-color);
+  color: var(--primary-color);
+  box-shadow: 2px 2px var(--accent-color);
+}
+.login-btn,.register-btn{
+  background-color: var(--accent-color);
+}
+.btn-primary , .btn-primary:hover , .btn-primary:focus{
+  background-color: var(--accent-color);
+  border: none;
+  outline: none;
+}
+/* modal */
+/* center */
+
+.profile {
+  margin-right: 24px;
+  width: 184px;
+  height: 184px;
+
+}
+.profile img {
+  max-width: 100%;
+  border-radius: 50%;
+  width: 184px;
+  height: 184px;
+  object-fit: cover;
+}
+.name-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.name-area .heading {
+  color:  var(--primary-color);
+}
+.name-area .title {
+   color: var(--secondary-color);
+   margin-top: 8px;
+}
+.button-wraper{
+  display: flex;
+}
+.left-btn,.right-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 16px;
+  text-decoration: none;
+  cursor: pointer;
+   color: var(--secondary-color);
+  margin-top: 8px;
+  margin-right: 8px;
+  transition: all 0.4s ease-in-out;
+}
+.left-btn
+{
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+}
+.right-btn 
+{
+  background-color: var(--primary-color);;
+  color: var(--theme-color);
+}
+.left-btn:hover {
+  background-color: var(--primary-color);;
+  color: var(--theme-color);
+  border: 1px solid var(--primary-color);
+}
+.arrow{
+  position: absolute;
+  bottom: 50px;
+  right: 16px;
+  width: fit-content;
+  animation-name: arrow;
+  animation-duration: .8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  cursor: pointer;
+   color: var(--accent-color);
+}
+
+@keyframes arrow
+{
+  0%{
+    transform: translateY(4px) ;
+  }
+  100%{
+    transform: translateY(-4px) ;
+  }
+}
+
+
+
+.contact{
+  height: 100vh;
+
+}
+.contact-wraper{
+  position: relative;
+}
+.upper,.footer{
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
+}
+
+.email-wraper {
+    /* width: calc(100% / 3 - 24px); */
+    border-radius: 16px;
+    border: 1px dotted var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  margin-top: 16px;
+    justify-content: space-between;
+    width: 100%/1.5;
+}
+.email-wraper a {
+  margin: 0 0 16px 0;
+}
+.email-link,.face-link{
+  margin-right: 24px;
+  color: var(--primary-color);
+}
+.email-link > i,.face-link > i{
+  margin-right: 8px;
+}
+
+.footer{
+  padding-bottom: 24px;
+}
+.footer .links{
+  margin-bottom: 16px;
+}
+.footer .links a{
+  text-decoration: none;
+  color:  var(--primary-color);
+  margin-right: 8px;
+}
+.love-icon{
+  margin-right: 4px;
+  color: var(--accent-color);
+}
+.arrow-down{
+  rotate: 180deg;
+}
+
+/* media query */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  :root{
+    --heading-one: 32px;
+    --heading-two: 18px;
+    --heading-three: 16px;
+    --heading-four: 16px;
+    --caption-one: 24px;
+    --caption-two: 16x;
+    --caption-three: 12px;
+  }
+  .menu-btn{
+    display: block;
+    position: relative;
+  }
+  .inner-links{
+    position: absolute;
+    box-shadow: 10px 10px var(--accent-color);
+    right: 0px;
+    width: 192px;
+    flex-direction: column;
+    text-align: center;
+    background: var(--theme-color);
+    display: none;
+    transition: all 0.3s ease-in-out;
+  }
+  .burger{
+    cursor: pointer;
+     transition: all 0.3s ease-in-out;
+     font-size: var(--heading-two);
+     color: var(--primary-color);
+  }
+  .menu-btn .inner-links.show{
+    display: flex;
+  }
+  .menu-btn.show{
+    rotate: 90deg
+  }
+  nav .outer-links a {
+    margin: 8px;
+  }
+  nav .inner-links a {
+    margin: 0;
+    padding: 8px;
+    transition: all 0.5s ease-in-out;
+  }
+  nav .inner-links a:hover {
+      background-color: var(--primary-color);
+      color: var(--theme-color);
+  }
+  .outer-links{
+    display: none
+  }
+  .profile{
+    margin: 0 0 16px 0;
+  }
+  .home-wraper,.button-wraper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+  .left-btn, .right-btn {
+    margin: 8px 0 8px 0
+  }
+
+  .button-wrapper button {
+    width: fit-content;
+    margin: 8px auto;
+  }
+  .email-wraper {
+ 
+    flex-direction: column;
+  }
+  .home .arrow{
+    bottom: 64px;
+    left: 50%;
+  }
+  .about .arrow , .projects .arrow{
+
+    display: none;
+  }
+
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  :root{
+    --heading-one: 32px;
+    --heading-two: 20px;
+    --heading-three: 16px;
+    --heading-four: 14px;
+    --caption-one: 18px;
+    --caption-two: 16x;
+    --caption-three: 14px;
+  }
+  .about ,.projects{
+    margin-top: 24px
+  }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  :root{
+    --heading-one: 32px;
+    --heading-two: 20px;
+    --heading-three: 16px;
+    --heading-four: 14px;
+    --caption-one: 18px;
+    --caption-two: 16px;
+    --caption-three: 14px;
+  }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  :root{
+    --nav-height: 80px;
+    --heading-one: 32px;
+    --heading-two: 22px;
+    --heading-three: 20px;
+    --heading-four: 18px;
+    --caption-one: 20px;
+    --caption-two: 18px;
+    --caption-three: 16px;
+  }
+
+  .button-wrapper button
+  {
+    margin-right: 16px;
+    outline: none;
+    border-radius: 16px;
+    border: 1px solid var(--primary-color);
+    padding: 8px 16px;
+    transition: all 0.5s ease-in-out;;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  :root{
+    --nav-height: 120px;
+    --nav-height: 80px;
+    --heading-one: 32px;
+    --heading-two: 24px;
+    --heading-three: 22px;
+    --heading-four: 20px;
+    --caption-one: 22px;
+    --caption-two: 20px;
+    --caption-three: 18px;
+  }
+}
