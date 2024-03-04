@@ -64,7 +64,7 @@ function isLogged()
      
       repareGuestElements()
       hideSpinner()
-      console.log("not logged")
+    //  console.log("not logged")
     }
   });
 }
@@ -93,7 +93,7 @@ function register() {
     .catch((error) => {
       hideSpinner()
       const errorCode = error.code;
-      console.log(errorCode);
+   //   console.log(errorCode);
       const errorMessage = error.message;
       showRegistererror(errorCode,errorMessage)
     });
@@ -178,7 +178,7 @@ function login()
   hideRegistererror();
   if(!isEmptyLoginfields())
   {  
-    console.log("asdsadasd")
+   
     hideSpinner()
     return;
   }

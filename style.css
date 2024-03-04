@@ -113,7 +113,114 @@ nav{
 }
 nav .logo h1 .color-letter{
   color: var(--accent-color);
+  font-family: "Gluten", cursive;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+  font-size: 48px;
 }
+
+/*  */
+nav .logo h1 span{
+  display: inline-block;
+  user-select: none;
+}
+
+nav .logo h1 span:nth-child(1) {
+  animation: balance 1.3s ease-out 1s 1;
+  transform-origin: bottom left;
+}
+
+@keyframes balance {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  
+  30%, 60% {
+    transform: rotate(-45deg);
+  }
+}
+
+nav .logo h1  span:nth-child(2) {
+  animation: shrinkjump 2s ease-in-out 3s 1;
+  transform-origin: bottom center;
+}
+
+@keyframes shrinkjump {
+  10%, 35% {
+    transform: scale(2, .2) translate(0, 0);
+  }
+  
+  45%, 50% {
+    transform: scale(1) translate(0, -150px);
+  }
+  
+  80% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+nav .logo h1  span:nth-child(3) {
+  animation: falling 2s ease-out 5s;
+  transform-origin: bottom center;
+}
+
+@keyframes falling {
+  12% {
+    transform: rotateX(240deg);
+  }
+  
+  24% {
+    transform: rotateX(150deg);
+  }
+  
+  36% {
+    transform: rotateX(200deg);
+  }
+  
+  48% {
+    transform: rotateX(175deg);
+  }
+  
+  60%, 85% {
+    transform: rotateX(180deg);
+  }
+  
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+nav .logo h1  span:nth-child(4) {
+  animation: rotate 1s ease-out 7s;
+}
+
+@keyframes rotate {
+  20%, 80% {
+    transform: rotateY(180deg);
+  }
+  
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+nav .logo h1  span:nth-child(5) {
+  animation: toplong 1.5s linear 9s ;
+}
+
+@keyframes toplong {
+  10%, 40% {
+    transform: translateY(+2vh) scaleY(1);
+  }
+  
+  90% {
+    transform: translateY(+2vh) scaleY(4);
+  }
+}
+/*  */
 .right-links{
   display: flex;
   align-items: center;
@@ -407,6 +514,7 @@ nav .links a{
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   :root{
+    --container-margin: 32px;;
     --heading-one: 32px;
     --heading-two: 20px;
     --heading-three: 16px;
@@ -422,13 +530,14 @@ nav .links a{
 @media only screen and (min-width: 992px) {
   :root{
     --nav-height: 80px;
+    --container-margin: 64px;
     --heading-one: 32px;
     --heading-two: 22px;
-    --heading-three: 20px;
-    --heading-four: 18px;
-    --caption-one: 20px;
-    --caption-two: 18px;
-    --caption-three: 16px;
+    --heading-three: 18px;
+    --heading-four: 16px;
+    --caption-one: 18px;
+    --caption-two: 16px;
+    --caption-three: 14px;
   }
 
   .button-wrapper button
@@ -446,13 +555,19 @@ nav .links a{
 @media only screen and (min-width: 1200px) {
   :root{
     --nav-height: 120px;
+    --container-margin: 64px;
     --nav-height: 80px;
+    --container-margin: 64px;
     --heading-one: 32px;
     --heading-two: 24px;
-    --heading-three: 22px;
-    --heading-four: 20px;
+    --heading-three: 14px;
+    --heading-four: 14px;
+    --heading-five: 14px;
+
     --caption-one: 22px;
     --caption-two: 20px;
-    --caption-three: 18px;
+    --caption-three: 14px;
+    --caption-four: 14px;
   }
+
 }
