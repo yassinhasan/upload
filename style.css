@@ -119,6 +119,8 @@ nav .logo h1 .color-letter{
   align-items: center;
 }
 
+
+
 .right-links .fa-moon
 {
   cursor: pointer;
@@ -152,6 +154,7 @@ nav .links a{
 .login-btn,.register-btn{
   background-color: var(--accent-color);
 }
+
 .btn-primary , .btn-primary:hover , .btn-primary:focus{
   background-color: var(--accent-color);
   border: none;

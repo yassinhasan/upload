@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword ,onAuthStateChanged  , signOut  ,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,54 +25,56 @@ const analytics = getAnalytics(firebase);
 const db = getDatabase(firebase);
 const auth = getAuth();
 
-// register
-let register_btn = document.querySelector(".register-btn");
+register
+let register_btn = document.querySelector(".register-btn-modal");
 register_btn.addEventListener("click", (e) => {
   e.preventDefault();
   register()
 })
 
 
-function get() {
-  var username = document.getElementById('username').value
+// sign in
 
-  var user_ref = db.ref('users/' + username)
-  user_ref.on('value', function (snapshot) {
-    var data = snapshot.val()
+let sign_in_btn = document.querySelector(".login-btn-modal");
+sign_in_btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  
+  login()
+})
 
 
-
-  })
-
+isLogged()
+function isLogged()
+{
+  showSpinner()
+  onAuthStateChanged(auth, (user) => {
+   
+    if (user) {
+     
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid
+      repareLoggedInUserElements(user);
+      hideSpinner()
+    //  console.log(user)
+      // ...
+    } else {
+      // User is signed out
+      // ...
+     
+      repareGuestElements()
+      hideSpinner()
+      console.log("not logged")
+    }
+  });
 }
 
-function update() {
-  var username = document.getElementById('username').value
-  var email = document.getElementById('email').value
-  var password = document.getElementById('password').value
 
-  var updates = {
-    email: email,
-    password: password
-  }
-
-  db.ref('users/' + username).update(updates)
-
-  alert('updated')
-}
-
-function remove() {
-  var username = document.getElementById('username').value
-
-  db.ref('users/' + username).remove()
-
-  alert('deleted')
-}
 
 function register() {
   showSpinner();
   hideRegistererror();
-  if(!isEmptyfields())
+  if(!isEmptyRegisterfields())
   {  
     hideSpinner()
     return;
@@ -101,7 +104,8 @@ function register() {
 function saveUserinDatabase(user)
 {
 
-  set(ref(db, 'users/' + user.userId), {
+  console.log(user.uid)
+  set(ref(db, 'users/' + user.uid), {
     username: username_r.value,
     email: user.email,
     password: password_r.value
@@ -144,5 +148,53 @@ function saveUserinDatabase(user)
       icon: "error",
       title: error
     }); // end of alert
+  });
+}
+
+
+let logoutBtn = document.querySelector(".logout");
+
+  logoutBtn.addEventListener("click",(e)=>{
+    e.preventDefault()
+    logoutUser()
+})
+
+
+
+
+function logoutUser()
+{
+  signOut(auth).then(() => {
+    repareGuestElements();
+  }).catch((error) => {
+    console.log(error)
+  });
+}
+
+
+function login()
+{
+  showSpinner();
+  hideRegistererror();
+  if(!isEmptyLoginfields())
+  {  
+    console.log("asdsadasd")
+    hideSpinner()
+    return;
+  }
+  signInWithEmailAndPassword(auth, email_input.value, password_input.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    hideSignInmodal()
+    repareLoggedInUserElements(user)
+    // ...
+  })
+  .catch((error) => {
+    hideSpinner()
+    const errorCode = error.code;
+    console.log(errorCode);
+    const errorMessage = error.message;
+    showRegistererror(errorCode,errorMessage)
   });
 }

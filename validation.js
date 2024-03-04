@@ -4,13 +4,20 @@ let invalid_email = document.querySelector(".invalid-email");
 let invalid_username = document.querySelector(".invalid-username");
 let invalid_password = document.querySelector(".invalid-password");
 
+let invalid_email_l = document.querySelector(".invalid-email-login");
+let invalid_password_l = document.querySelector(".invalid-password-login");
+
 var username_r = document.getElementById('username-r');
 var email_r = document.getElementById('email-r');
 var password_r = document.getElementById('password-r');
 
 
+var email_input = document.getElementById('email');
+var password_input = document.getElementById('password');
 
-function isEmptyfields()
+
+
+function isEmptyRegisterfields()
 {
 
     let isValid = true;
@@ -25,6 +32,24 @@ function isEmptyfields()
       isValid = false;
     }
     if(password_r.value.trim() === "" || password_r.value.trim() ===null)
+    {
+      showRegistererror("empty-password","you shoud enter password");
+      isValid = false;
+    }
+
+    return isValid;
+}
+function isEmptyLoginfields()
+{
+
+    let isValid = true;
+
+    if(email_input.value.trim() === "" || email_input.value.trim() ===  null)
+    {
+      showRegistererror("empty-email","you shoud enter email");
+      isValid = false;
+    }
+    if(password_input.value.trim() === "" || password_input.value.trim() ===null)
     {
       showRegistererror("empty-password","you shoud enter password");
       isValid = false;
@@ -65,6 +90,18 @@ function showRegistererror(errorCode,errorMessage) {
         invalid_password.style.display = "block";
         invalid_password.innerHTML = errorMessage
         break;
+    case "empty-email-login":
+        invalid_email_l.style.display = "block";
+        invalid_email_l.innerHTML = errorMessage
+        break;
+    case "empty-password-login":
+        invalid_password_l.style.display = "block";
+        invalid_password_l.innerHTML = errorMessage
+        break;
+    case "auth/invalid-credential":
+      invalid_email_l.style.display = "block";
+      invalid_email_l.innerHTML = "soory email or password is invalid"
+        break;
     
     default:
 
@@ -82,4 +119,11 @@ function hideRegistererror() {
 
   invalid_password.style.display = "none";
   invalid_password.innerHTML = ""
+
+  invalid_email_l.style.display = "none";
+  invalid_email_l.innerHTML = ""
+   
+
+  invalid_password_l.style.display = "none";
+  invalid_password_l.innerHTML = ""
 }

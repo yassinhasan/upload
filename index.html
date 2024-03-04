@@ -21,6 +21,17 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
   <link rel="manifest" href="./manifest.json">
   <link href="components.css" rel="stylesheet" type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+
+    .sign-in,
+    .register,
+    .logout,
+    .profile,
+   .name-area {
+    display: none;
+   }
+
+  </style>
 </head>
 
 <body class="light">
@@ -36,9 +47,10 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
        <div class="right-links">
         <!-- links -->
         <div class="links">
-          <a href="#login" class="heading-2 sign-in" aria-label="login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-          <a href="#login" class="heading-2 register" aria-label="register" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
-          <a href="#projects" class="heading-2 file-icon" aria-label="Projects"><i class="fa-solid fa-file"></i></a>
+          <a href="#" class="heading-2 sign-in" aria-label="login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+          <a href="#" class="heading-2 register" aria-label="register" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+
+          <a href="#" class="heading-2 logout">logout</a>
           <i class="fa-solid fa-moon"></i>
         </div>       
        </div>
@@ -80,11 +92,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             </div>
           </div>
           <div class="footer">
-            <div class="links">
-              <a href="#about" aria-label="About">About</a>
-              <a href="#projects" aria-label="Projects">Projects</a>
-              <a href="#contact" aria-label="Contact">Contact</a>
-            </div>
             <p class="copyright caption-3">Made with <span class="love-icon"><i class="fa-regular fa-heart"></i></span>By Hasan Meady. All Rights Reserved.</p>
           </div>
         </div>
@@ -93,33 +100,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
   </div> <!-- end of container -->
 <!-- modal -->
 <!-- Vertically centered scrollable modal -->
-
-
-<!-- login modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
-          </div>
-          <button type="submit" class="btn btn-primary login-btn">Sign in</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- modal -->
 <!-- register modal -->
 <div class="modal fade register-modal"  id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -147,13 +127,44 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             <input type="password" class="form-control" id="password-r" required>
             <div class="invalid-feedback invalid-password"></div>
           </div>
-          <button type="submit" class="btn btn-primary register-btn">Register</button>
+          <button type="submit" class="btn btn-primary  register-btn-modal">Register</button>
         </form>
       </div>
     </div>
   </div>
 </div>
 <!-- modal -->
+
+<!-- login modal -->
+<div class="modal fade signin-modal" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="#">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control email" id="email" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback invalid-email-login">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control password" id="password" required>
+            <div class="invalid-feedback invalid-password-login">
+          </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary login-btn-modal">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+
 
 <!-- spinners -->
 <div class="spinners">

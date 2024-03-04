@@ -8,7 +8,7 @@
 }
 
 .overlay{
-    background-color: var(--primary-color);
+    background-color: var(--theme-color);
     position: fixed;
     top: 0;
     left: 0;
@@ -16,4 +16,12 @@
     height: 100%;
     z-index: 1065;
     display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .spinner-grow {
+    
+        width: 1.2rem;
+        height: 1.2rem;
+    }
 }
