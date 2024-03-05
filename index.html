@@ -50,6 +50,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
           <a href="#" class="heading-3 sign-in" aria-label="login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
           <a href="#" class="heading-3 register" aria-label="register" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
 
+          <a href="#" class="heading-3 user-files"  aria-label="files" data-bs-toggle="modal" data-bs-target="#filesModal">Files</a>
           <a href="#" class="heading-3 logout">logout</a>
           <i class="fa-solid fa-moon"></i>
         </div>       
@@ -59,7 +60,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
       <!-- after login -->
       <div class="profile-wraper">
         <h2 class="hello">Hello!</h2>
-        <h2 class="usernname"></h2>
+        <h2 class="username"></h2>
         <h3 class="message">You can use many service like upload and download any files</h3>
         <span class="down">&darr;</span>
         
@@ -68,7 +69,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
           <form action="#" class="upload-form" enctype="multipart/form-data">
             <input class="file-input" type="file" name="file" hidden multiple>
             <i class="fas fa-cloud-upload-alt"></i>
-            <p>Browse File to Upload</p>
+            <p class="drop-text">Drag & Drop to Upload File</p>
           </form>
           <section class="progress-area"></section>
           <section class="uploaded-area"></section>
@@ -189,6 +190,23 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
 </div>
 <!-- modal -->
 
+<!-- Files modal -->
+<div class="modal fade files-modal" data-bs-backdrop="static" data-bs-keyboard="false"  id="filesModal" tabindex="-1" aria-labelledby="filesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="filesModalLabel">Your files</h5>
+       
+        <i class="fa-solid fa-xmark btn-close"  type="button"  data-bs-dismiss="modal" aria-label="Close"></i>
+      </div>
+      <div class="modal-body">
+        <h1>Your files here</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
+
 
 <!-- spinners -->
 <div class="spinners">
@@ -216,6 +234,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
 <!-- overlay -->
 <div class="overlay"></div>
 <!-- overlay -->
+
+<!-- firebase -->
+<script src="config.js"></script>
 <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
 "></script>
@@ -224,7 +245,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
 <script src="./helper.js" ></script> 
 <script src="./validation.js" ></script> 
 <script src="./firbase.js" type="module" ></script> 
-<script src="upload.js"></script>
+<script src="upload.js" type="module"></script>
 <script src="script.js" ></script>
 </body>
 

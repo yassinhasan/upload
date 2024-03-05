@@ -8,15 +8,6 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-s
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDEi2XLHPBDJ6mesKhaJnRWyNyKG4CJdkk",
-  authDomain: "uplaod-now.firebaseapp.com",
-  projectId: "uplaod-now",
-  storageBucket: "uplaod-now.appspot.com",
-  messagingSenderId: "584367053002",
-  appId: "1:584367053002:web:470a853d95f5f02e263c33",
-  measurementId: "G-QYFBWR04Z5"
-};
 
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
@@ -24,6 +15,7 @@ const analytics = getAnalytics(firebase);
 // Set database variable
 const db = getDatabase(firebase);
 const auth = getAuth();
+const storage = getStorage(firebase);
 
 
 // register
@@ -138,17 +130,12 @@ function isLogged() {
 }
 
 
-async function getUserDataFromDatabase(uid) {
-  //  const userData = ref(db, 'users/' + uid );
-  // onValue(userData, (snapshot) => {
-  //   return   snapshot.val();
+async function getUserDataFromDatabase(uid ) {
 
-  // });
 
   let myPromise = new Promise(function (resolve) {
     const userData = ref(db, 'users/' + uid);
     onValue(userData, (snapshot) => {
-      ;
       resolve(snapshot.val());
     });
   });

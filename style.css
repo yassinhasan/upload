@@ -373,6 +373,7 @@ body.modal-open .container{
 }
 .arrow{
   position: absolute;
+  z-index: 6;
   bottom: 3vh;
   right: 16px;
   width: fit-content;

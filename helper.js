@@ -37,28 +37,32 @@ function hideSignInmodal()
 let sign_in = document.querySelector(".sign-in");
 let register = document.querySelector(".register");
 let logout = document.querySelector(".logout");
+let  user_files = document.querySelector(".user-files");
 let profile = document.querySelector(".profile");
 let name_area = document.querySelector(".name-area");
 let wrapper = document.querySelector(".wrapper");
 let profile_wraper = document.querySelector(".profile-wraper");
-let usernname = profile_wraper.querySelector(".usernname");
+let username = profile_wraper.querySelector(".username");
 
 function repareLoggedInUserElements(user)
 {
     sign_in.style.display="none"
     register.style.display="none"
+
     logout.style.display="inline-block"
+    user_files.style.display="inline-block"
     profile.style.display="none"
     name_area.style.display="none"
     wrapper.style.display="block"
     profile_wraper.style.display="flex";
-    usernname.innerHTML = user.username
+    username.innerHTML = user.username
 }
 function repareGuestElements()
 {
     sign_in.style.display="inline-block"
     register.style.display="inline-block"
     logout.style.display="none"
+    user_files.style.display="none"
     profile.style.display="block"
     name_area.style.display="flex"
     wrapper.style.display="none"

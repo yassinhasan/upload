@@ -11,6 +11,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
 }
 .down{
     font-size: 24px;
@@ -23,17 +24,17 @@
     font-weight: bold;
 }
 .profile-wraper .username{
-    font-size: 80px;
     font-weight: bold;
     margin-top: -26px;
+    color: var(--primary-color);
 }
 .profile-wraper .message{
-    font-size: var(--caption-two);
+    font-size: var(--caption-three);
     color: var(--caption-color);
 }
 .profile-wraper .wrapper{
-    width: 430px;
-    background: #fff;
+    width: 100%;
+    background: var(--theme-color);
     border-radius: 5px;
     padding: 30px;
     box-shadow: 7px 7px 12px rgba(0,0,0,0.05);
@@ -44,7 +45,7 @@
     font-weight: 600;
     text-align: center;
   }
-  .profile-wraper .wrapper form{
+  .profile-wraper .wrapper .upload-form{
     height: 167px;
     display: flex;
     cursor: pointer;
@@ -65,24 +66,26 @@
     margin-top: 15px;
     font-size: 16px;
   }
-  .profile-wraper section .row{
+  .profile-wraper section .upload-row{
     margin-bottom: 10px;
-    background: #E9F0FF;
+    /* background: #E9F0FF; */
+    background: var(--theme-color);
     list-style: none;
     padding: 15px 20px;
     border-radius: 5px;
+    color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .profile-wraper section .row i{
+  .profile-wraper section .upload-row i{
     color: #6990F2;
-    font-size: 30px;
+    font-size: var(--heading-three);
   }
   .profile-wraper section .details span{
     font-size: 14px;
   }
-  .profile-wraper .progress-area .row .content{
+  .profile-wraper .progress-area .upload-row .content{
     width: 100%;
     margin-left: 15px;
   }
@@ -96,7 +99,7 @@
     height: 6px;
     width: 100%;
     margin-bottom: 4px;
-    background: #fff;
+    background: var(--theme-color);
     border-radius: 30px;
   }
   .profile-wraper  .content .progress-bar .progress{
@@ -115,19 +118,36 @@
   .profile-wraper .uploaded-area::-webkit-scrollbar{
     width: 0px;
   }
-  .profile-wraper .uploaded-area .row .content{
+  .profile-wraper .uploaded-area .upload-row .content{
     display: flex;
     align-items: center;
   }
-  .profile-wraper .uploaded-area .row .details{
+  .profile-wraper .uploaded-area .upload-row .details{
     display: flex;
     margin-left: 15px;
     flex-direction: column;
   }
-  .profile-wraper .uploaded-area .row .details .size{
-    color: #404040;
-    font-size: 11px;
+  .profile-wraper .uploaded-area .upload-row .details .size{
+    color: var(--primary-color);
+    font-size: var(--caption-five);
+    text-align: start;
   }
-  .profile-wraper .uploaded-area i.fa-check{
-    font-size: 16px;
+  .profile-wraper .uploaded-area .upload-row .downloaded-link{
+    color: var(--primary-color);
+    font-size: var(--caption-six);
+    
+  }
+  .profile-wraper .uploaded-area .upload-row .fenished i , profile-wraper .uploaded-area .upload-row  .fenished a{
+    color: var(--primary-color);
+    font-size: var(--caption-four);
+  }
+  .profile-wraper .uploaded-area .upload-row  .fenished .fa-check {
+    margin-right: 8px;
+  }
+
+
+  /* drag and drop */
+
+  .upload-form.active{
+    border: 2px dashed var(--accent-color) !important;
   }
