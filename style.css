@@ -13,13 +13,19 @@ html,body {
 /*  name = "yassin" */
 :root{
   --nav-height: 80px;
+  --container-margin: 120px;
   --heading-one: 48px;
   --heading-two: 24px;
-  --heading-three: 20px;
-  --heading-four: 16px;
-  --caption-one: 24px;
-  --caption-two: 16px;
-  --caption-three: 14px;
+  --heading-three: 22px;
+  --heading-four: 20px;
+  --heading-five: 18px;
+  --heading-six: 14px;
+  --caption-one: 20px;
+  --caption-two: 18px;
+  --caption-three: 16px;
+  --caption-four: 14px;
+  --caption-five: 12px;
+  --caption-six: 10px;
 }
 
 body{
@@ -66,7 +72,19 @@ body.light{
 {
   font-size: var(--heading-four);
   color: var(--primary-color);
-  font-weight: 300;
+  font-weight: 400;
+}
+.heading-5
+{
+  font-size: var(--heading-five);
+  color: var(--primary-color);
+  font-weight: 400;
+}
+.heading-6
+{
+  font-size: var(--heading-six);
+  color: var(--primary-color);
+  font-weight: 400;
 }
 .caption-1{
   font-size: var(--caption-one);
@@ -83,7 +101,21 @@ body.light{
   color: var(--caption-color);
   font-weight: normal;
 }
-
+.caption-4{
+  font-size: var(--caption-four);
+  color: var(--caption-color);
+  font-weight: normal;
+}
+.caption-5{
+  font-size: var(--caption-five);
+  color: var(--caption-color);
+  font-weight: normal;
+}
+.caption-6{
+  font-size: var(--caption-six);
+  color: var(--caption-color);
+  font-weight: normal;
+}
 .home{
   height: 100vh;
   width: 100%;
@@ -113,12 +145,6 @@ nav{
 }
 nav .logo h1 .color-letter{
   color: var(--accent-color);
-  font-family: "Gluten", cursive;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" 0;
   font-size: 48px;
 }
 
@@ -126,10 +152,22 @@ nav .logo h1 .color-letter{
 nav .logo h1 span{
   display: inline-block;
   user-select: none;
+  font-family: "Gluten", cursive;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+   
+}
+/*  */
+nav .logo h1 span{
+  display: inline-block;
+  user-select: none;
 }
 
 nav .logo h1 span:nth-child(1) {
-  animation: balance 1.3s ease-out 1s 1;
+  animation: balance 1.3s ease-out 1s 1 , balance 1.3s ease-out 14s 1 ;
   transform-origin: bottom left;
 }
 
@@ -144,7 +182,7 @@ nav .logo h1 span:nth-child(1) {
 }
 
 nav .logo h1  span:nth-child(2) {
-  animation: shrinkjump 2s ease-in-out 3s 1;
+  animation: shrinkjump 2s ease-in-out 3s 1 , shrinkjump 2s ease-in-out 16s 1;
   transform-origin: bottom center;
 }
 
@@ -163,7 +201,7 @@ nav .logo h1  span:nth-child(2) {
 }
 
 nav .logo h1  span:nth-child(3) {
-  animation: falling 2s ease-out 5s;
+  animation: falling 2s ease-out 5s , falling 2s ease-out 18s 1;
   transform-origin: bottom center;
 }
 
@@ -194,7 +232,7 @@ nav .logo h1  span:nth-child(3) {
 }
 
 nav .logo h1  span:nth-child(4) {
-  animation: rotate 1s ease-out 7s;
+  animation: rotate 1s ease-out 7s , rotate 1s ease-out 20s 1;
 }
 
 @keyframes rotate {
@@ -208,7 +246,7 @@ nav .logo h1  span:nth-child(4) {
 }
 
 nav .logo h1  span:nth-child(5) {
-  animation: toplong 1.5s linear 9s ;
+  animation: toplong 1.5s linear 9s , toplong 1.5s linear 22s 1;
 }
 
 @keyframes toplong {
@@ -258,6 +296,11 @@ nav .links a{
   color: var(--primary-color);
   box-shadow: 2px 2px var(--accent-color);
 }
+.modal-header .btn-close {
+  background: var(--theme-color) !important;
+  color: var(--accent-color) !important;
+  font-size: var(--heading-two);
+}
 .login-btn,.register-btn{
   background-color: var(--accent-color);
 }
@@ -266,6 +309,9 @@ nav .links a{
   background-color: var(--accent-color);
   border: none;
   outline: none;
+}
+body.modal-open .container{
+  filter: blur(8px);
 }
 /* modal */
 /* center */
@@ -300,9 +346,9 @@ nav .links a{
   display: flex;
 }
 .left-btn,.right-btn {
-  padding: 8px 16px;
+  padding: 4px 8px;
   border: none;
-  border-radius: 16px;
+  border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
    color: var(--secondary-color);
@@ -327,7 +373,7 @@ nav .links a{
 }
 .arrow{
   position: absolute;
-  bottom: 50px;
+  bottom: 3vh;
   right: 16px;
   width: fit-content;
   animation-name: arrow;
@@ -357,9 +403,10 @@ nav .links a{
 }
 .contact-wraper{
   position: relative;
+  height: 100vh;
 }
 .upper,.footer{
-  height: 50vh;
+  height: 49vh;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -388,9 +435,7 @@ nav .links a{
   margin-right: 8px;
 }
 
-.footer{
-  padding-bottom: 24px;
-}
+
 .footer .links{
   margin-bottom: 16px;
 }
@@ -406,7 +451,10 @@ nav .links a{
 .arrow-down{
   rotate: 180deg;
 }
-
+.copyright {
+  margin: 0;
+  padding: 0 0 24px 0;
+}
 /* media query */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -482,7 +530,7 @@ nav .links a{
     flex-direction: column;
   }
   .home .arrow{
-    bottom: 64px;
+    bottom: 10vh;;
     left: 50%;
   }
   .about .arrow , .projects .arrow{
@@ -496,15 +544,7 @@ nav .links a{
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  :root{
-    --heading-one: 32px;
-    --heading-two: 20px;
-    --heading-three: 16px;
-    --heading-four: 14px;
-    --caption-one: 18px;
-    --caption-two: 16x;
-    --caption-three: 14px;
-  }
+
   .about ,.projects{
     margin-top: 24px
   }
@@ -515,13 +555,7 @@ nav .links a{
 @media only screen and (min-width: 768px) {
   :root{
     --container-margin: 32px;;
-    --heading-one: 32px;
-    --heading-two: 20px;
-    --heading-three: 16px;
-    --heading-four: 14px;
-    --caption-one: 18px;
-    --caption-two: 16px;
-    --caption-three: 14px;
+
   }
 
 }
@@ -531,22 +565,16 @@ nav .links a{
   :root{
     --nav-height: 80px;
     --container-margin: 64px;
-    --heading-one: 32px;
-    --heading-two: 22px;
-    --heading-three: 18px;
-    --heading-four: 16px;
-    --caption-one: 18px;
-    --caption-two: 16px;
-    --caption-three: 14px;
+
   }
 
   .button-wrapper button
   {
     margin-right: 16px;
     outline: none;
-    border-radius: 16px;
+    border-radius: 8px;
     border: 1px solid var(--primary-color);
-    padding: 8px 16px;
+    padding: 4px 8px;
     transition: all 0.5s ease-in-out;;
   }
 }
@@ -558,16 +586,7 @@ nav .links a{
     --container-margin: 64px;
     --nav-height: 80px;
     --container-margin: 64px;
-    --heading-one: 32px;
-    --heading-two: 24px;
-    --heading-three: 14px;
-    --heading-four: 14px;
-    --heading-five: 14px;
 
-    --caption-one: 22px;
-    --caption-two: 20px;
-    --caption-three: 14px;
-    --caption-four: 14px;
   }
 
 }

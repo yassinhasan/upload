@@ -39,6 +39,21 @@ function isEmptyRegisterfields()
 
     return isValid;
 }
+function isNotvalidUsername()
+{
+
+    let isValid = true;
+    
+    const usernameRegex = /^[a-zA-Z]{3,}[-_\s]?[a-zA-Z]+[0-9]*$/
+  
+    if(usernameRegex.test(username_r.value.trim()) === false)
+    {
+      showRegistererror("invalid-username","username shoud letter or number");
+      isValid = false;
+    }
+
+    return isValid;
+}
 function isEmptyLoginfields()
 {
 
@@ -46,12 +61,12 @@ function isEmptyLoginfields()
 
     if(email_input.value.trim() === "" || email_input.value.trim() ===  null)
     {
-      showRegistererror("empty-email","you shoud enter email");
+      showLoginerror("empty-email-login","you shoud enter email");
       isValid = false;
     }
     if(password_input.value.trim() === "" || password_input.value.trim() ===null)
     {
-      showRegistererror("empty-password","you shoud enter password");
+      showLoginerror("empty-password-login","you shoud enter password");
       isValid = false;
     }
     return isValid;
@@ -82,6 +97,10 @@ function showRegistererror(errorCode,errorMessage) {
         invalid_username.style.display = "block";
         invalid_username.innerHTML = errorMessage
         break;
+    case "invalid-username":
+        invalid_username.style.display = "block";
+        invalid_username.innerHTML = errorMessage
+        break;
     case "empty-email":
         invalid_email.style.display = "block";
         invalid_email.innerHTML = errorMessage
@@ -90,6 +109,27 @@ function showRegistererror(errorCode,errorMessage) {
         invalid_password.style.display = "block";
         invalid_password.innerHTML = errorMessage
         break;
+    default:
+
+        break;
+  }
+
+}
+function showLoginerror(errorCode,errorMessage) {
+
+
+  switch (errorCode) {
+    case "auth/invalid-email":
+      invalid_email_l.style.display = "block";
+      invalid_email_l.innerHTML = "this email is invalid"
+        break;
+
+    case "auth/missing-password":
+      invalid_password_l.style.display = "block";
+      invalid_password_l.innerHTML = "you shoud enter password"
+        break;
+
+
     case "empty-email-login":
         invalid_email_l.style.display = "block";
         invalid_email_l.innerHTML = errorMessage
@@ -109,6 +149,10 @@ function showRegistererror(errorCode,errorMessage) {
   }
 
 }
+
+
+
+
 function hideRegistererror() {
 
   invalid_email.style.display = "none";

@@ -9,6 +9,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap" rel="stylesheet">
   <link href="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
 " rel="stylesheet">
@@ -20,17 +21,16 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
   <meta name="description" content="this is my portfolio of hasan meady">
   <link rel="manifest" href="./manifest.json">
   <link href="components.css" rel="stylesheet" type="text/css" />
+  <link href="upload.css" rel="stylesheet" type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
   <style>
 
-    .sign-in,
-    .register,
-    .logout,
-    .profile,
-   .name-area {
-    display: none;
-   }
-
+    .spinners{
+      display: block;
+    }
+    .overlay{
+      display: block;
+    }
   </style>
 </head>
 
@@ -47,30 +47,53 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
        <div class="right-links">
         <!-- links -->
         <div class="links">
-          <a href="#" class="heading-2 sign-in" aria-label="login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-          <a href="#" class="heading-2 register" aria-label="register" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
+          <a href="#" class="heading-3 sign-in" aria-label="login" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+          <a href="#" class="heading-3 register" aria-label="register" data-bs-toggle="modal" data-bs-target="#registerModal">Register</a>
 
-          <a href="#" class="heading-2 logout">logout</a>
+          <a href="#" class="heading-3 logout">logout</a>
           <i class="fa-solid fa-moon"></i>
         </div>       
        </div>
 
       </nav>
+      <!-- after login -->
+      <div class="profile-wraper">
+        <h2 class="hello">Hello!</h2>
+        <h2 class="usernname"></h2>
+        <h3 class="message">You can use many service like upload and download any files</h3>
+        <span class="down">&darr;</span>
+        
+        <div class="wrapper">
+          <header>Drop Any Files</header>
+          <form action="#" class="upload-form" enctype="multipart/form-data">
+            <input class="file-input" type="file" name="file" hidden multiple>
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Browse File to Upload</p>
+          </form>
+          <section class="progress-area"></section>
+          <section class="uploaded-area"></section>
+        </div>
+      </div>
+      <!-- after login -->
       <div class="home-wraper">
         <div class="profile">
           <img class="profile-img" src="profile.jpg" alt="profile">
         </div>
         <div class="name-area">
-          <span class="caption-2">Hello, i'm</span>
+          <span class="caption-5">Hello, i'm</span>
           <h2 class="heading-2">Hasan Meady</h2>
-          <h3 class="title caption-2">Full stack developer</h3>
+          <h3 class="title caption-4">Full stack developer</h3>
           <div class="button-wraper">
-            <a class="left-btn heading-4 btn" href="Hassan Meady_CV.pdf" download target="_blank" aria-label="Download CV">Download CV</a>
-            <a class="right-btn heading-4 btn" href="https://github.com/yassinhasan" target="_blank" aria-label="GitHub">GitHub</a>
+            <a class="left-btn heading-6 btn" href="Hassan Meady_CV.pdf" download target="_blank" aria-label="Download CV">Download CV</a>
+            <a class="right-btn heading-6 btn" href="https://github.com/yassinhasan" target="_blank" aria-label="GitHub">GitHub</a>
           </div>
         </div>
+
+        <!--  loginupload files -->
+
+        <!-- upload files -->
       </div>
-      <a class="arrow" href="#contact" aria-label="arrow">
+      <a class="arrow" href="#footer" aria-label="arrow">
         <i class="fa-solid fa-angles-down"></i>
       </a>
 
@@ -82,7 +105,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
     <div class="contact" id="contact">
         <div class="contact-wraper">
           <div class="upper">
-             <h2 class="caption-2 text-center">Get in Touch</h2>
+             <h2 class="caption-5 text-center">Get in Touch</h2>
             <h2 class="heading-2 text-center heading-card">Contact Me</h2>
             <div class="email-wraper">
               <a href="mailto:hasanmeady781@gmail.com" class="email-link"><i class="fa-solid fa-envelope email-icon" aria-label="email"></i>hasanmeady781@gmail.com</a>
@@ -91,7 +114,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
               <a href="https://www.linkedin.com/in/hasan-meady-7679081b4/" class="face-link" target="_blank" aria-label="linkedin"><i class="fa-brands fa-linkedin"></i>Linkedin</a>
             </div>
           </div>
-          <div class="footer">
+          <div class="footer" id="footer">
             <p class="copyright caption-3">Made with <span class="love-icon"><i class="fa-regular fa-heart"></i></span>By Hasan Meady. All Rights Reserved.</p>
           </div>
         </div>
@@ -106,25 +129,25 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="registerModalLabel">Register</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <i class="fa-solid fa-xmark btn-close"  type="button"  data-bs-dismiss="modal" aria-label="Close"></i>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
             <label for="username-r" class="form-label">User Name</label>
-            <input type="text" class="form-control" id="username-r" aria-describedby="user name" required>
+            <input type="text" class="form-control" id="username-r" aria-describedby="user name" required autocomplete="username">
             <div class="invalid-feedback invalid-username">
             </div>
           </div>
           <div class="mb-3">
             <label for="email-r" class="form-label">Email Addres</label>
-            <input type="email" class="form-control" id="email-r" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control" id="email-r" aria-describedby="emailHelp" required autocomplete="email">
             <div class="invalid-feedback invalid-email">
             </div>
           </div>
           <div class="mb-3">
             <label for="password-r" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password-r" required>
+            <input type="password" class="form-control" id="password-r" required autocomplete="current-password">
             <div class="invalid-feedback invalid-password"></div>
           </div>
           <button type="submit" class="btn btn-primary  register-btn-modal">Register</button>
@@ -141,18 +164,19 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       
+        <i class="fa-solid fa-xmark btn-close"  type="button"  data-bs-dismiss="modal" aria-label="Close"></i>
       </div>
       <div class="modal-body">
         <form action="#">
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control email" id="email" aria-describedby="emailHelp" required>
-            <div class="invalid-feedback invalid-email-login">
+            <input type="email" class="form-control email" id="email" aria-describedby="emailHelp" required autocomplete="email">
+            <div class="invalid-feedback invalid-email-login"></div>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control password" id="password" required>
+            <input type="password" class="form-control password" id="password" required autocomplete="current-password">
             <div class="invalid-feedback invalid-password-login">
           </div>
           </div>
@@ -186,12 +210,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
   <div class="spinner-grow text-info" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
-  <div class="spinner-grow text-light" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-  <div class="spinner-grow text-dark" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
 </div>
 <!-- spinners -->
 
@@ -206,6 +224,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
 <script src="./helper.js" ></script> 
 <script src="./validation.js" ></script> 
 <script src="./firbase.js" type="module" ></script> 
+<script src="upload.js"></script>
 <script src="script.js" ></script>
 </body>
 

@@ -39,6 +39,9 @@ let register = document.querySelector(".register");
 let logout = document.querySelector(".logout");
 let profile = document.querySelector(".profile");
 let name_area = document.querySelector(".name-area");
+let wrapper = document.querySelector(".wrapper");
+let profile_wraper = document.querySelector(".profile-wraper");
+let usernname = profile_wraper.querySelector(".usernname");
 
 function repareLoggedInUserElements(user)
 {
@@ -47,6 +50,9 @@ function repareLoggedInUserElements(user)
     logout.style.display="inline-block"
     profile.style.display="none"
     name_area.style.display="none"
+    wrapper.style.display="block"
+    profile_wraper.style.display="flex";
+    usernname.innerHTML = user.username
 }
 function repareGuestElements()
 {
@@ -55,4 +61,7 @@ function repareGuestElements()
     logout.style.display="none"
     profile.style.display="block"
     name_area.style.display="flex"
+    wrapper.style.display="none"
+    profile_wraper.style.display="none"
+
 }
