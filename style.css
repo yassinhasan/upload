@@ -530,9 +530,9 @@ body.modal-open .container{
  
     flex-direction: column;
   }
-  .home .arrow{
-    bottom: 10vh;;
-    left: 50%;
+  .email-wraper ,.profile-wraper .upload-form ,.progress-area , .uploaded-area  {
+    width: calc(100% - 24px);
+
   }
   .about .arrow , .projects .arrow{
 
@@ -549,7 +549,11 @@ body.modal-open .container{
   .about ,.projects{
     margin-top: 24px
   }
+  .email-wraper ,.profile-wraper .upload-form ,.progress-area , .uploaded-area  {
+    width: calc(100% - 24px);
+   
 
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -568,7 +572,10 @@ body.modal-open .container{
     --container-margin: 64px;
 
   }
-
+  .email-wraper ,.profile-wraper .upload-form ,.progress-area , .uploaded-area  {
+    width: 80%;
+ 
+  }
   .button-wrapper button
   {
     margin-right: 16px;
@@ -589,5 +596,8 @@ body.modal-open .container{
     --container-margin: 64px;
 
   }
+  .email-wraper ,.profile-wraper .upload-form ,.progress-area , .uploaded-area  {
+    width: 50%;
 
+  }
 }

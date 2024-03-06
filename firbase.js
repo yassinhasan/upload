@@ -206,7 +206,9 @@ logoutBtn.addEventListener("click", (e) => {
 
 function logoutUser() {
   signOut(auth).then(() => {
-    repareGuestElements();
+    // repareGuestElements();
+    showSpinner()
+    window.location.reload()
 
   }).catch((error) => {
     console.log(error)

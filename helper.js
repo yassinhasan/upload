@@ -53,7 +53,7 @@ function repareLoggedInUserElements(user)
     user_files.style.display="inline-block"
     profile.style.display="none"
     name_area.style.display="none"
-    wrapper.style.display="block"
+    wrapper.style.display="flex"
     profile_wraper.style.display="flex";
     username.innerHTML = user.username
 }

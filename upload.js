@@ -37,7 +37,7 @@ fileInput.onchange = ({ target }) => {
          fileName = file.name;
         if (fileName.length >= 12) {
             let splitName = fileName.split('.');
-            fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
+            fileName = splitName[0].substring(0, 8) + "..." + splitName[1];
         }
         
       
@@ -98,7 +98,7 @@ function progressDownload(progress) {
                             <i class="fas fa-file-alt"></i>
                             <div class="content">
                               <div class="details">
-                                <span class="name">${fileName} • Uploading</span>
+                                <span class="name">${fileName} (${fileSize})</span>
                                 <span class="percent">${progress}%</span>
                               </div>
                               <div class="progress-bar">
@@ -119,9 +119,7 @@ function completeDownload(link)
                               <div class="content upload">
                                 <i class="fas fa-file-alt"></i>
                                 <div class="details">
-                                  <span class="name">${fileName} • Uploaded</span>
-                                  <span class="size">${fileSize} </span>
-                                  
+                                  <span class="name">${fileName} (${fileSize})</span>
                                 </div>
                               </div>
                               <div class="fenished">
@@ -131,6 +129,7 @@ function completeDownload(link)
 
                             </li>`;
     uploadedArea.classList.remove("onprogress");
+    uploadedArea.classList.remove("hide");
     uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
     
 
@@ -171,3 +170,7 @@ dropArea.addEventListener("drop", (event)=>{
 
     }
   });
+
+
+
+// show all files
