@@ -22,8 +22,9 @@ const dropArea = document.querySelector(".upload-form"),
     progressArea = document.querySelector(".progress-area"),
     uploadedArea = document.querySelector(".uploaded-area");
 let file;
-let fileName;
-let progressValue;
+let shortFileName;
+let fullFileName
+let fileExtension;
 let fileSize;
 
 dropArea.addEventListener("click", () => {
@@ -34,10 +35,15 @@ dropArea.addEventListener("click", () => {
 fileInput.onchange = ({ target }) => {
     file = target.files[0];
     if (file) {
-         fileName = file.name;
-        if (fileName.length >= 12) {
-            let splitName = fileName.split('.');
-            fileName = splitName[0].substring(0, 8) + "..." + splitName[1];
+        fullFileName = file.name;
+        let splitName = fullFileName.split('.');
+        fileExtension = splitName[splitName.length - 1];
+        if (fullFileName.length >= 17) {
+         
+            shortFileName = splitName[0].substring(0, 15) + "..." + fileExtension;
+
+        }else{
+            shortFileName = fullFileName
         }
         
       
@@ -54,7 +60,7 @@ function uploadFile() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             const uid = user.uid;
-            const usersRef = storageRef(storage, `users/${uid}/${fileName}`);
+            const usersRef = storageRef(storage, `users/${uid}/${fullFileName}`);
             const uploadTask = uploadBytesResumable(usersRef, file);
             uploadTask.on('state_changed',
                 (snapshot) => {
@@ -64,10 +70,10 @@ function uploadFile() {
                     progressDownload(progress)
                     switch (snapshot.state) {
                         case 'paused':
-                            console.log('Upload is paused');
+                         //   console.log('Upload is paused');
                             break;
                         case 'running':
-                            console.log('Upload is running');
+                         //   console.log('Upload is running');
                             break;
                     }
                 },
@@ -98,7 +104,7 @@ function progressDownload(progress) {
                             <i class="fas fa-file-alt"></i>
                             <div class="content">
                               <div class="details">
-                                <span class="name">${fileName} (${fileSize})</span>
+                                <span class="name">${shortFileName} (${fileSize})</span>
                                 <span class="percent">${progress}%</span>
                               </div>
                               <div class="progress-bar">
@@ -119,7 +125,7 @@ function completeDownload(link)
                               <div class="content upload">
                                 <i class="fas fa-file-alt"></i>
                                 <div class="details">
-                                  <span class="name">${fileName} (${fileSize})</span>
+                                  <span class="name">${shortFileName} (${fileSize})</span>
                                 </div>
                               </div>
                               <div class="fenished">
@@ -131,7 +137,22 @@ function completeDownload(link)
     uploadedArea.classList.remove("onprogress");
     uploadedArea.classList.remove("hide");
     uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
-    
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        color: "#b58126",
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "File Uploaded in successfully"
+      }); // end of alert
 
 }
 

@@ -1,4 +1,7 @@
-.spinners{
+.files-modal-content{
+    position: relative;
+}
+.spinners ,.files-spinners{
     position: fixed;
     left: 50%;
     top: 50%;
@@ -6,7 +9,7 @@
     transform: translate(-50%);
 }
 
-.overlay{
+.overlay , .files-overlay{
     background-color: var(--theme-color);
     position: fixed;
     top: 0;
@@ -16,11 +19,10 @@
     z-index: 1065;
 
 }
-
-@media only screen and (max-width: 600px) {
-    .spinner-grow {
-    
-        width: 1.2rem;
-        height: 1.2rem;
-    }
+.files-spinners ,.files-overlay{
+    position: absolute;
+}
+.spinner-grow ,.files-spinners .spinner-grow{
+    width: 1.2rem !important;
+    height: 1.2rem !important;
 }

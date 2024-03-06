@@ -86,8 +86,8 @@ function login() {
       const user = userCredential.user;
       hideSignInmodal()
 
-      let loggedUser = getUserDataFromDatabase(user.uid)
-      repareLoggedInUserElements(loggedUser);
+      getUserDataFromDatabase(user.uid,true)
+    
       // ...
     })
     .catch((error) => {
@@ -113,7 +113,7 @@ function isLogged() {
 
 
       getUserDataFromDatabase(uid)
-     
+
       // repareLoggedInUserElements(loggedUser);
 
       //  console.log(user)
@@ -130,9 +130,9 @@ function isLogged() {
 }
 
 
-async function getUserDataFromDatabase(uid ) {
+async function getUserDataFromDatabase(uid ,freshLogged=false) {
 
-
+ 
   let myPromise = new Promise(function (resolve) {
     const userData = ref(db, 'users/' + uid);
     onValue(userData, (snapshot) => {
@@ -142,6 +142,25 @@ async function getUserDataFromDatabase(uid ) {
   myPromise.then(user =>{
     repareLoggedInUserElements(user)
     hideSpinner()
+    if(freshLogged == true)
+    {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        color: "#b58126",
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "wellcome back "+user.username
+      }); // end of alert
+    }
   } ).catch(error=>console.log(error))
  
   
@@ -149,7 +168,7 @@ async function getUserDataFromDatabase(uid ) {
 
 function saveUserinDatabase(user) {
 
-  console.log(user.uid)
+ 
   set(ref(db, 'users/' + user.uid), {
     username: username_r.value,
     email: user.email,

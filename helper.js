@@ -1,6 +1,9 @@
 let spinners = document.querySelector(".spinners");
 let overlay = document.querySelector(".overlay");
 
+let filesSpinners = document.querySelector(".files-spinners");
+let filesOverlay = document.querySelector(".files-overlay");
+
 
 function showSpinner()
 {
@@ -12,6 +15,17 @@ function hideSpinner()
 {
     overlay.style.display="none"
     spinners.style.display="none"
+}
+function showFilesSpinner()
+{
+    filesSpinners.style.display="block"
+    filesOverlay.style.display="block"
+}
+
+function hideFilseSpinner()
+{
+    filesSpinners.style.display="none"
+    filesOverlay.style.display="none"
 }
 
 
@@ -55,6 +69,7 @@ function repareLoggedInUserElements(user)
     name_area.style.display="none"
     wrapper.style.display="flex"
     profile_wraper.style.display="flex";
+  
     username.innerHTML = user.username
 }
 function repareGuestElements()
