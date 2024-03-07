@@ -20,6 +20,7 @@ html,body {
   --heading-four: 20px;
   --heading-five: 18px;
   --heading-six: 14px;
+  --heading-nav:16px;
   --caption-one: 20px;
   --caption-two: 18px;
   --caption-three: 16px;
@@ -83,6 +84,12 @@ body.light{
 .heading-6
 {
   font-size: var(--heading-six);
+  color: var(--primary-color);
+  font-weight: 400;
+}
+.heading-nav
+{
+  font-size: var(--heading-nav);
   color: var(--primary-color);
   font-weight: 400;
 }
@@ -427,6 +434,10 @@ body.modal-open .container{
 }
 .email-wraper a {
   margin: 0 0 16px 0;
+  transition: all 0.4s ease-in-out;
+}
+.email-wraper a:hover,.email-wraper a:focus.email-wraper a:visited{
+  color: var(--accent-color);
 }
 .email-link,.face-link{
   margin-right: 24px;

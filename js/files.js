@@ -12,6 +12,16 @@ const db = getDatabase(firebase);
 const auth = getAuth();
 const storage = getStorage(firebase);
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Octr", "Nov", "Dec"];
+const fileTypes = {
+    file:  "<img src='./images/file.png' alt='file'>" ,
+    image : "<img src='./images/image.png' alt='image'>" ,
+    zip  : "<img src='./images/zip.png' alt='zip'>" ,
+    doc  : "<img src='./images/doc.png' alt='doc'>" ,
+    excel  : "<img src='./images/excel.png' alt='excel'>" ,
+    pdf  : "<img src='./images/pdf.png' alt='pdf'>" ,
+    ppt  : "<img src='./images/ppt.png' alt='ppt'>" ,
+    video  : "<img src='./images/video.png' alt='video'>" ,
+}
 
 
 const myModal = document.querySelector('.files-modal')
@@ -89,9 +99,11 @@ function prepraListFilesHtml(uid,res)
         getMetadata(storageRef(storage, `users/${uid}/${fileName}`))
             .then((metadata) => {
 
-                fileName = metadata.name
+                fileName = metadata.name 
                 let splitName = fileName.split('.');
                 fileExtension = splitName[splitName.length - 1];
+               
+                let imgSrc = getFilePrivew(fileExtension)
                 if (fileName.length >= 17) {
                     fileName = splitName[0].substring(0, 15) + "..." + fileExtension;
                 }
@@ -104,7 +116,7 @@ function prepraListFilesHtml(uid,res)
                  let cardItem = `
                  <div class="row file-card">
                  <div class="card" style="width: 18rem;">
-                   <i class="fas fa-file-alt"></i>
+                    ${imgSrc}
                    <div class="card-body">
                      <h5 class="file-title">${fileName}</h5>
                      <h5 class="file-date">${fileDate}</h5>
@@ -130,8 +142,8 @@ function prepraListFilesHtml(uid,res)
                             text: "You won't be able to revert this!",
                             icon: "warning",
                             showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
+                            confirmButtonColor: "#d33",
+                            cancelButtonColor: "#3085d6",
                             confirmButtonText: "Yes, delete it!"
                           }).then((result) => {
                             if (result.isConfirmed) {
@@ -169,4 +181,67 @@ function prepraListFilesHtml(uid,res)
     };
 
 
+}
+
+
+function getFilePrivew(fileExtension)
+{
+    let imgElement ;
+    switch (fileExtension) {
+        case "png":
+        case "gif":
+        case "jpeg":
+        case "jpg":
+        case "wep":
+        case "ico":
+        case "svg":
+        case "ps":
+        case "psd":
+            imgElement = fileTypes.image
+            break;
+        case "zip":
+        case "rar":
+        case "z":
+        case "dep":
+        case "pkg":
+            imgElement = fileTypes.zip
+            break;
+        case "doc":
+        case "docx":
+        case "txt":
+        case "odt":
+            imgElement = fileTypes.doc
+            break;
+        case "csv":
+        case "xls":
+        case "xlsx":
+            imgElement = fileTypes.excel
+            break;
+        case "pdf":
+            imgElement = fileTypes.pdf
+            break;
+        case "ppt":
+        case "pptx":
+        case "pps":
+        case "odp":
+            imgElement = fileTypes.ppt
+            break;
+        case "avi":
+        case "h264":
+        case "mp4":
+        case "mpg":
+        case "mpg4":
+        case "webm":
+        case "wmv":
+        case "mov":
+        case "flv":
+            imgElement = fileTypes.video
+            break;
+    
+        default:
+            imgElement = fileTypes.file
+            break;
+    }
+   
+    return imgElement;
 }

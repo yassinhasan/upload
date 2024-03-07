@@ -1,10 +1,10 @@
 {
-    "theme_color": "#121212",
-    "background_color": "#121212",
+    "theme_color": "#fba61b",
+    "background_color": "#fba61b",
     "display": "standalone",
     "scope": "/",
     "start_url": "/index.html",
-    "name": "Upload Files With H.meady",
+    "name": "Dr.Nobody Apss",
     "short_name": "H.meady",
     "description": "many services will be available",
     "icons": [

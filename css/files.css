@@ -51,13 +51,18 @@
     margin-bottom: 8px;
 }
 a.card-link.download {
-    color: #4caf50;
+    color: #3085d6;
 }
 a.card-link.delete {
-    color: #cf281cb3;
+    color: #dd3333;
 }
 .empty-files {
     text-align: center;
     font-size: var(--heading-six);
     color: var(--caption-color);
+}
+
+.file-card .card img{
+    width: 48px;
+    margin: auto;
 }

@@ -138,6 +138,7 @@ function completeDownload(link)
     uploadedArea.classList.remove("hide");
     uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
     const Toast = Swal.mixin({
+      customClass: 'swal-upload',
         toast: true,
         position: "top-end",
         showConfirmButton: false,
