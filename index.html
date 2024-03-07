@@ -20,12 +20,22 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
     rel="stylesheet">
   <title>Dr Nobody</title>
   <meta name="description" content="this is my portfolio of hasan meady">
+
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-  <link rel="manifest" href="./site.webmanifest" />
-  <link href="components.css" rel="stylesheet" type="text/css" />
-  <link href="upload.css" rel="stylesheet" type="text/css" />
-  <link href="files.css" rel="stylesheet" type="text/css" />
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="manifest" href="./manifest.json" />
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+  <link rel="apple-touch-icon" href="./images/icon-256x256.png">
+  <link rel="apple-touch-icon" href="./images/icon-384x384.png">
+  <link rel="apple-touch-icon" href="./images/icon-512x512.png">
+
+  <meta name="apple-mobile-web-app-status-bar" content="#121212" />
+  <meta name="theme-color" content="#262626" />
+
+  <link href="./css/components.css" rel="stylesheet" type="text/css" />
+  <link href="./css/upload.css" rel="stylesheet" type="text/css" />
+  <link href="./css/files.css" rel="stylesheet" type="text/css" />
+  <link href="./css/style.css" rel="stylesheet" type="text/css" />
   <style>
     .spinners {
       display: block;
@@ -51,14 +61,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
         <div class="right-links">
           <!-- links -->
           <div class="links">
-            <a href="#" class="heading-5 sign-in" aria-label="login" data-bs-toggle="modal"
+            <a href="#" class="heading-6 sign-in" aria-label="login" data-bs-toggle="modal"
               data-bs-target="#loginModal">Login</a>
-            <a href="#" class="heading-5 register" aria-label="register" data-bs-toggle="modal"
+            <a href="#" class="heading-6 register" aria-label="register" data-bs-toggle="modal"
               data-bs-target="#registerModal">Register</a>
 
-            <a href="#" class="heading-5 user-files" aria-label="files" data-bs-toggle="modal"
+            <a href="#" class="heading-6 user-files" aria-label="files" data-bs-toggle="modal"
               data-bs-target="#filesModal">Files</a>
-            <a href="#" class="heading-5 logout">logout</a>
+            <a href="#" class="heading-6 logout">logout</a>
             <i class="fa-solid fa-moon"></i>
           </div>
         </div>
@@ -72,6 +82,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
         <span class="down">&darr;</span>
 
         <div class="wrapper">
+          <button  class="heading-6 files-btn" aria-label="files" data-bs-toggle="modal"
+          data-bs-target="#filesModal">Files</button>
           <form action="#" class="upload-form" enctype="multipart/form-data">
             <input class="file-input" type="file" name="file" hidden multiple>
             <i class="fas fa-cloud-upload-alt"></i>
@@ -84,14 +96,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
       <!-- after login -->
       <div class="home-wraper">
         <div class="profile">
-          <img class="profile-img" src="profile.jpg" alt="profile">
+          <img class="profile-img" src="./images/profile.jpg" alt="profile">
         </div>
         <div class="name-area">
           <span class="caption-5">Hello, i'm</span>
           <h2 class="heading-2">Hasan Meady</h2>
           <h3 class="title caption-4">Full stack developer</h3>
           <div class="button-wraper">
-            <a class="left-btn heading-6 btn" href="Hassan Meady_CV.pdf" download target="_blank"
+            <a class="left-btn heading-6 btn" href="./files/Hassan Meady_CV.pdf" download target="_blank"
               aria-label="Download CV">Download CV</a>
             <a class="right-btn heading-6 btn" href="https://github.com/yassinhasan" target="_blank"
               aria-label="GitHub">GitHub</a>
@@ -285,7 +297,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
   <!-- overlay -->
 
   <!-- firebase -->
-  <script src="config.js"></script>
+  <script src="./js/config.js"></script>
   <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
 "></script>
@@ -295,12 +307,12 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
-  <script src="./helper.js"></script>
-  <script src="./validation.js"></script>
-  <script src="./firbase.js" type="module"></script>
-  <script src="upload.js" type="module"></script>
-  <script src="files.js" type="module"></script>
-  <script src="script.js"></script>
+  <script src="./js/helper.js"></script>
+  <script src="./js/validation.js"></script>
+  <script src="./js/firbase.js" type="module"></script>
+  <script src="./js/upload.js" type="module"></script>
+  <script src="./js/files.js" type="module"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>

@@ -269,7 +269,7 @@ nav .logo h1  span:nth-child(5) {
 .right-links .fa-moon
 {
   cursor: pointer;
-  font-size: var(--heading-two);
+  font-size: 14px;
   margin-right: 16px;
   color: var(--primary-color);
 }
