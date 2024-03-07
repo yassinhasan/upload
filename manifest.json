@@ -1,11 +1,11 @@
 {
     "theme_color": "#121212",
-    "background_color": "#262626",
+    "background_color": "#121212",
     "display": "standalone",
     "scope": "/",
     "start_url": "/index.html",
     "name": "Upload Files With H.meady",
-    "short_name": "H.,meady",
+    "short_name": "H.meady",
     "description": "many services will be available",
     "icons": [
         {

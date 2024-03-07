@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebas
 import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
-import { getStorage, ref as storageRef, uploadBytes, uploadBytesResumable, getDownloadURL, listAll, getMetadata } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
+import { getStorage, ref as storageRef, uploadBytes, uploadBytesResumable, getDownloadURL, listAll, getMetadata , deleteObject} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
@@ -16,15 +16,20 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 const myModal = document.querySelector('.files-modal')
 let cardWraper = document.querySelector(".card-wraper");
+let userFiles = document.querySelector(".user-files");
+let filesBtn = document.querySelector(".files-btn");
 
-
-myModal.addEventListener('shown.bs.modal', () => {
-
+userFiles.addEventListener("click",()=>{
     showFilesSpinner()
-    cardWraper.innerHTML = "";
+    $('#filesModal').modal('show')
     listFiles()
-
 })
+filesBtn.addEventListener("click",()=>{
+    showFilesSpinner()
+    $('#filesModal').modal('show')
+    listFiles()
+})
+
 
 
 function listFiles() {
@@ -39,7 +44,6 @@ function listFiles() {
             listAll(listRef)
                 .then((res) => {
                     prepraListFilesHtml(uid,res)
-                    hideFilseSpinner()
                 }).catch((error) => {
                     // Uh-oh, an error occurred!
                     console.log(error);
@@ -51,15 +55,28 @@ function listFiles() {
 
 }
 
+
+
 function prepraListFilesHtml(uid,res)
 {
     let files = res.items;
+    let originalName;
+    let fileName ;
+    let downloadURL ;
+    let fileSize;
+    let fileDate  ;
+    let fileExtension ;
+    cardWraper.innerHTML = "";
+    if(files.length == 0)
+    {
+        cardWraper.innerHTML  =  `<div class="empty-files">you don't have any files yes</div>`;
+        hideFilseSpinner();
+        return;
+    }
     for (let index =  files.length - 1  ; index >= 0; index--) {
-        let fileName = files[index].name;
-        let downloadURL ;
-        let fileSize;
-        let fileDate  ;
-        let fileExtension ;
+          
+         fileName =  files[index].name;
+        
         getDownloadURL(storageRef(storage, `users/${uid}/${fileName}`))
             .then((url) => {
                 downloadURL = url;
@@ -71,6 +88,7 @@ function prepraListFilesHtml(uid,res)
 
         getMetadata(storageRef(storage, `users/${uid}/${fileName}`))
             .then((metadata) => {
+
                 fileName = metadata.name
                 let splitName = fileName.split('.');
                 fileExtension = splitName[splitName.length - 1];
@@ -78,7 +96,7 @@ function prepraListFilesHtml(uid,res)
                     fileName = splitName[0].substring(0, 15) + "..." + fileExtension;
                 }
                 (metadata.size < 1024) ? fileSize = metadata.size + " KB" : fileSize = (metadata.size / (1024 * 1024)).toFixed(2) + " MB";
-               
+
                 fileDate = new Date(metadata.timeCreated)
                  fileDate = fileDate.getDate()  + "-" + (months[fileDate.getMonth()]) + "-" + fileDate.getFullYear() 
                  +" " +
@@ -94,14 +112,58 @@ function prepraListFilesHtml(uid,res)
                    </div>
                    <div class="card-body">
                      <a href="${downloadURL}" class="card-link download" target="_blank"><i class="fa-solid fa-download"></i></a>
-                     <a href="#" class="card-link delete"><i class="fa-solid fa-trash"></i></a>
+                     <a href="#" class="card-link delete" data-filename="${metadata.name}"><i class="fa-solid fa-trash"></i></a>
                    </div>
                  </div>
                  </div>
                  `;
-                 cardWraper.innerHTML += cardItem;   
+                 cardWraper.innerHTML += cardItem;  
+                
+                 let fileDeleteBtns=  document.querySelectorAll(".card-link.delete");
+                 fileDeleteBtns.forEach(fileDeleteBtn => {
+                    fileDeleteBtn.addEventListener("click",(e)=>{
+                     let fileToDeleted = fileDeleteBtn.getAttribute("data-filename");
+                      
+                        Swal.fire({
+                            customClass: 'swal-height',
+                            title: "Are you sure?",
+                            text: "You won't be able to revert this!",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Yes, delete it!"
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                                const desertRef = storageRef(storage, `users/${uid}/${ fileToDeleted}`);
+                                // Delete the file
+                                deleteObject(desertRef).then(() => {
+                                    Swal.fire({
+                                        customClass: 'swal-height',
+                                        title: "Deleted!",
+                                        text: "Your file has been deleted.",
+                                        icon: "success"
+                                      });
+                                      showFilesSpinner()
+                                      cardWraper.innerHTML = "";
+                                      listFiles()
+                                  
+                                }).catch((error) => {
+                                    console.log(error);
+                                });
+ 
+                            }
+                          });
+                     });
+                   
+                 });
+
+                 hideFilseSpinner()
             })
+
             .catch((error) => {
+                console.log(error);
+                hideFilseSpinner()
                 // Uh-oh, an error occurred!
             });
     };

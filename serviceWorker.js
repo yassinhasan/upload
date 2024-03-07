@@ -1,21 +1,25 @@
-const staticName = "hasanmeady-portfolio"
+const staticName = "Dr-nobody"
 const assets = [
   "/",
   "/index.html",
-  "/style.css",
-  "/scriptjs",
+  "/css/style.css",
+  "/css/components.css",
+  "/css/upload.css",
+  "/css/files.css",
+  "/js/script.js",
+  "/js/config.js",
+  "/js/files.js",
+  "/js/firebase.js",
+  "/js/helper.js",
+  "/js/upload.js",
+  "/js/validation.js",
+
   "/images/icon-192x192.png",
   "/images/icon-256x256.png",
   "/images/icon-384x384.png",
   "/images/icon-512x512.png",
-  "/one.png",
-  "/two.png",
-  "/three.png",
-  "/profile.jpg",
-  "/profile2.jpg",
-  "/health.png",
-  "/landing.png",
-  "/wedding.png",
+  "/images/profile.jpg",
+ 
 
 ]
 

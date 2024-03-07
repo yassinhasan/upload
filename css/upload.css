@@ -35,13 +35,12 @@
     width: 100%;
     background: var(--theme-color);
     border-radius: 5px;
-    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-
+    margin-top: 16px;
   }
   .profile-wraper .wrapper header{
     color: var(--caption-color);
@@ -80,6 +79,9 @@
     align-items: center;
     justify-content: space-between;
 
+  }
+  .progress-area{
+    margin-top: 8px;
   }
   .progress-area .upload-row{
     border: 1px dotted var(--accent-color);
@@ -185,7 +187,7 @@
   }
 
 .files-btn{
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;

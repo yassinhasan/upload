@@ -145,6 +145,7 @@ async function getUserDataFromDatabase(uid ,freshLogged=false) {
     if(freshLogged == true)
     {
       const Toast = Swal.mixin({
+        customClass: 'swal-login',
         toast: true,
         position: "top-end",
         showConfirmButton: false,
@@ -177,6 +178,7 @@ function saveUserinDatabase(user) {
   })
     .then(() => {
       const Toast = Swal.mixin({
+        customClass: 'swal-login',
         toast: true,
         position: "top-end",
         showConfirmButton: false,
@@ -197,6 +199,7 @@ function saveUserinDatabase(user) {
       // The write failed...
       console.log(error);
       const Toast = Swal.mixin({
+        customClass: 'swal-login',
         toast: true,
         position: "top-end",
         showConfirmButton: false,

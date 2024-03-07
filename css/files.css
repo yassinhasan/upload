@@ -56,3 +56,8 @@ a.card-link.download {
 a.card-link.delete {
     color: #cf281cb3;
 }
+.empty-files {
+    text-align: center;
+    font-size: var(--heading-six);
+    color: var(--caption-color);
+}

@@ -23,6 +23,15 @@
     position: absolute;
 }
 .spinner-grow ,.files-spinners .spinner-grow{
-    width: 1.2rem !important;
-    height: 1.2rem !important;
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.swal-height{
+    font-size: 11px !important;
+    margin: 16px 0 !important;
+}
+.swal-login{
+    font-size: 11px !important;
+   
 }

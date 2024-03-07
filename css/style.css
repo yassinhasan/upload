@@ -534,9 +534,9 @@ body.modal-open .container{
     width: calc(100% - 24px);
 
   }
-  .about .arrow , .projects .arrow{
-
-    display: none;
+  .home .arrow{
+    bottom: 8vh;
+    left: 50%;
   }
 
 }
