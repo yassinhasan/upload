@@ -139,6 +139,10 @@ body.light{
   justify-content: center;
   align-items: center;
 }
+.home-wraper .profile img{
+  padding: 1px;
+  background-color: #fbfbfb;
+}
 
 /* links */
 nav{
