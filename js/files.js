@@ -70,12 +70,7 @@ function listFiles() {
 function prepraListFilesHtml(uid,res)
 {
     let files = res.items;
-    let originalName;
-    let fileName ;
-    let downloadURL ;
-    let fileSize;
-    let fileDate  ;
-    let fileExtension ;
+
     cardWraper.innerHTML = "";
     if(files.length == 0)
     {
@@ -85,92 +80,94 @@ function prepraListFilesHtml(uid,res)
     }
     for (let index =  files.length - 1  ; index >= 0; index--) {
           
-         fileName =  files[index].name;
         
-        getDownloadURL(storageRef(storage, `users/${uid}/${fileName}`))
-            .then((url) => {
-                downloadURL = url;
-             
-            })
-            .catch((error) => {
-                // Handle any errors
-            });
+         let fileName =  files[index].name;
 
         getMetadata(storageRef(storage, `users/${uid}/${fileName}`))
             .then((metadata) => {
-
-                fileName = metadata.name 
-                let splitName = fileName.split('.');
-                fileExtension = splitName[splitName.length - 1];
-               
-                let imgSrc = getFilePrivew(fileExtension)
-                if (fileName.length >= 17) {
-                    fileName = splitName[0].substring(0, 15) + "..." + fileExtension;
-                }
-                (metadata.size < 1024) ? fileSize = metadata.size + " KB" : fileSize = (metadata.size / (1024 * 1024)).toFixed(2) + " MB";
-
-                fileDate = new Date(metadata.timeCreated)
-                 fileDate = fileDate.getDate()  + "-" + (months[fileDate.getMonth()]) + "-" + fileDate.getFullYear() 
-                 +" " +
-                 fileDate.getHours() + ":" + fileDate.getMinutes(); ;
-                 let cardItem = `
-                 <div class="row file-card">
-                 <div class="card" style="width: 18rem;">
-                    ${imgSrc}
-                   <div class="card-body">
-                     <h5 class="file-title">${fileName}</h5>
-                     <h5 class="file-date">${fileDate}</h5>
-                     <h5 class="file-size">Size:<span>${fileSize}</span></h5>
+            
+                getDownloadURL(storageRef(storage, `users/${uid}/${metadata.name}`))
+                .then((url) => {
+                    let fileSize;
+                    let fileDate  ;
+                    let fileExtension ;
+                  console.log(metadata.name,url);
+                  let splitName = fileName.split('.');
+                  fileExtension = splitName[splitName.length - 1];
+                 
+                  let imgSrc = getFilePrivew(fileExtension)
+                  if (fileName.length >= 17) {
+                      fileName = splitName[0].substring(0, 15) + "..." + fileExtension;
+                  }
+                  (metadata.size < 1024) ? fileSize = metadata.size + " KB" : fileSize = (metadata.size / (1024 * 1024)).toFixed(2) + " MB";
+  
+                  fileDate = new Date(metadata.timeCreated)
+                   fileDate = fileDate.getDate()  + "-" + (months[fileDate.getMonth()]) + "-" + fileDate.getFullYear() 
+                   +" " +
+                   fileDate.getHours() + ":" + fileDate.getMinutes(); ;
+                   let cardItem = `
+                   <div class="row file-card">
+                   <div class="card" style="width: 18rem;">
+                      ${imgSrc}
+                     <div class="card-body">
+                       <h5 class="file-title">${metadata.name}</h5>
+                       <h5 class="file-date">${fileDate}</h5>
+                       <h5 class="file-size">Size:<span>${fileSize}</span></h5>
+                     </div>
+                     <div class="card-body">
+                       <a href="${url}" class="card-link download" target="_blank"><i class="fa-solid fa-download"></i></a>
+                       <a href="#" class="card-link delete" data-filename="${metadata.name}"><i class="fa-solid fa-trash"></i></a>
+                     </div>
                    </div>
-                   <div class="card-body">
-                     <a href="${downloadURL}" class="card-link download" target="_blank"><i class="fa-solid fa-download"></i></a>
-                     <a href="#" class="card-link delete" data-filename="${metadata.name}"><i class="fa-solid fa-trash"></i></a>
                    </div>
-                 </div>
-                 </div>
-                 `;
-                 cardWraper.innerHTML += cardItem;  
-                
-                 let fileDeleteBtns=  document.querySelectorAll(".card-link.delete");
-                 fileDeleteBtns.forEach(fileDeleteBtn => {
-                    fileDeleteBtn.addEventListener("click",(e)=>{
-                     let fileToDeleted = fileDeleteBtn.getAttribute("data-filename");
-                      
-                        Swal.fire({
-                            customClass: 'swal-height',
-                            title: "Are you sure?",
-                            text: "You won't be able to revert this!",
-                            icon: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#d33",
-                            cancelButtonColor: "#3085d6",
-                            confirmButtonText: "Yes, delete it!"
-                          }).then((result) => {
-                            if (result.isConfirmed) {
-                                const desertRef = storageRef(storage, `users/${uid}/${ fileToDeleted}`);
-                                // Delete the file
-                                deleteObject(desertRef).then(() => {
-                                    Swal.fire({
-                                        customClass: 'swal-height',
-                                        title: "Deleted!",
-                                        text: "Your file has been deleted.",
-                                        icon: "success"
-                                      });
-                                      showFilesSpinner()
-                                      cardWraper.innerHTML = "";
-                                      listFiles()
-                                  
-                                }).catch((error) => {
-                                    console.log(error);
-                                });
- 
-                            }
-                          });
-                     });
-                   
-                 });
+                   `;
+                   cardWraper.innerHTML += cardItem;  
+                  
+                   let fileDeleteBtns=  document.querySelectorAll(".card-link.delete");
+                   fileDeleteBtns.forEach(fileDeleteBtn => {
+                      fileDeleteBtn.addEventListener("click",(e)=>{
+                       let fileToDeleted = fileDeleteBtn.getAttribute("data-filename");
+                        
+                          Swal.fire({
+                              customClass: 'swal-height',
+                              title: "Are you sure?",
+                              text: "You won't be able to revert this!",
+                              icon: "warning",
+                              showCancelButton: true,
+                              confirmButtonColor: "#d33",
+                              cancelButtonColor: "#3085d6",
+                              confirmButtonText: "Yes, delete it!"
+                            }).then((result) => {
+                              if (result.isConfirmed) {
+                                  const desertRef = storageRef(storage, `users/${uid}/${ fileToDeleted}`);
+                                  // Delete the file
+                                  deleteObject(desertRef).then(() => {
+                                      Swal.fire({
+                                          customClass: 'swal-height',
+                                          title: "Deleted!",
+                                          text: "Your file has been deleted.",
+                                          icon: "success"
+                                        });
+                                        showFilesSpinner()
+                                        cardWraper.innerHTML = "";
+                                        listFiles()
+                                    
+                                  }).catch((error) => {
+                                      console.log(error);
+                                  });
+   
+                              }
+                            });
+                       });
+                     
+                   });
+  
+                   hideFilseSpinner()
+                })
+                .catch((error) => {
+                    // Handle any errors
+                });
 
-                 hideFilseSpinner()
             })
 
             .catch((error) => {
